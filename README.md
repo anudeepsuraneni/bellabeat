@@ -1,5 +1,7 @@
 # How Can a Wellness Technology Company Play It Smart?
 
+**Identified two overlooked gaps in wearable fitness tracking — the sedentary blind spot and the sleep quality gap — and translated them into distinct, data-backed positioning angles for Bellabeat's marketing strategy.**
+
 **Bellabeat — Capstone for Google Data Analytics Professional Certificate**
 
 ---
@@ -13,22 +15,26 @@ Bellabeat is a high-growth wellness technology company targeting women. To fuel 
 ## 📊 Project Resources
 
 - **[Data Analysis Notebook](notebooks/bellabeat_wellness_analysis.ipynb)** — Complete R-based analysis with data transformation and insights
-- **[Google Slides Presentation](https://docs.google.com/presentation/d/1RmR7E-n8LG3ChkKzMdp_hvu58NEcJupVKOYmFJNkl4g)** — Executive summary and strategic recommendations for stakeholders
 
+### Visual Outputs
+- **[Strategic Insights (Google Slides)](https://docs.google.com/presentation/d/1RmR7E-n8LG3ChkKzMdp_hvu58NEcJupVKOYmFJNkl4g)**
+- **[Strategic Insights (PPT Export)](outputs/strategic_insights.pptx)** — Downloadable presentation for stakeholders
 ---
 
 ## 📁 Project Structure
 
 ```
 bellabeat/
-├── README.md                                 # Project overview and guide
+├── README.md                                # Project overview and guide
 ├── notebooks/
-│   └── bellabeat_wellness_analysis.ipynb     # Main R-based analysis notebook
+│   └── bellabeat_wellness_analysis.ipynb    # Main R-based analysis
+├── outputs/
+│   └── strategic_insights.pptx              # Strategic Insights (PPT Export)
 └── data/
     └── raw/
-        └── fitabase_4.12.16-5.12.16/         # FitBit fitness tracker dataset
-            ├── dailyActivity_merged.csv      # Daily activity metrics
-            └── sleepDay_merged.csv           # Sleep tracking data
+        └── fitabase_4.12.16-5.12.16/        # FitBit fitness tracker dataset
+            ├── dailyActivity_merged.csv     # Daily activity metrics
+            └── sleepDay_merged.csv          # Sleep tracking data
 ```
 
 ---
@@ -36,10 +42,11 @@ bellabeat/
 ## 📋 Data Sources & Ethics
 
 - **Source:** [FitBit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit) (CC0: Public Domain, Kaggle dataset)
-- **Sample:** 30 FitBit users who consented to share personal tracker data (April–May 2016)
+- **Sample:** 33 users (activity metrics) and 24 users (sleep metrics) who consented to share personal tracker data (April–May 2016)
+- **Volume:** 940 daily activity observations; 413 daily sleep observations
 - **Privacy:** Analysis uses only aggregated metrics with no personal identifiers; user consent obtained
 - **Credibility:** Kaggle usability score of 9.41; publicly available for reproducibility
-- **Limitation:** 30-user sample from 2016 — findings are directional, not statistically representative. Validated against general wellness research where possible.
+- **Limitation:** Small sample from 2016 — findings are directional, not statistically representative. Validated against general wellness research where possible.
 
 ---
 
@@ -58,12 +65,11 @@ Sleep efficiency (time asleep ÷ time in bed) was computed rather than relying o
 - Created derived features:
   - **Sleep efficiency** = total minutes asleep ÷ total time in bed — captures restlessness that raw duration hides
   - **Activity segments** = three tiers based on daily step count (10k+, 5–10k, <5k) — enables segment-specific recommendations
-  - **Temporal variables** = day of week, hour — for behavioral rhythm analysis
 
 ### Visualization Approach
 
 - Custom color palettes aligned to Bellabeat brand identity — analysis was positioned as a stakeholder-facing deliverable, not just exploratory
-- Trend smoothing applied to daily patterns to reduce noise and surface underlying rhythms
+- Smoothing applied to identify underlying relationships (e.g., relationship between steps and sedentary time in the sedentary paradox chart)
 - Diagonal reference line on sleep efficiency scatter plot — visually encodes the "perfect efficiency" benchmark, making the gap immediately visible
 
 ---
@@ -73,11 +79,11 @@ Sleep efficiency (time asleep ÷ time in bed) was computed rather than relying o
 1. **The Sedentary Paradox:** Users average **16.5 hours of sedentary time daily** — even those consistently hitting 10,000+ steps. This means step count, the metric most fitness trackers lead with, is masking a significant health risk. Active users are not necessarily healthy users.
 
 2. **Three Distinct User Segments:** Activity data clusters into clear behavioral tiers with different needs:
-   - **Highly Active** (10k+ steps, ~21% of users): Already engaged — want performance depth and competitive features
-   - **Moderately Active** (5–10k steps, ~43% of users): Responsive to progress framing and achievable milestones
-   - **Low Activity** (<5k steps, ~36% of users): Need low-friction nudges and encouraging content, not metrics overload
+   - **Highly Active** (10k+ steps, ~32% of users): Already engaged — want performance depth and competitive features
+   - **Moderately Active** (5–10k steps, ~36% of users): Responsive to progress framing and achievable milestones
+   - **Low Activity** (<5k steps, ~32% of users): Need low-friction nudges and encouraging content, not metrics overload
 
-3. **Sleep Quality Gap:** Average sleep duration (~7 hours) looks acceptable — but sleep efficiency tells a different story. Users lose an average of **30+ minutes per night** to restlessness or delayed sleep onset. The problem isn't time in bed; it's the quality of that time. This is an insight most trackers don't surface.
+3. **Sleep Quality Gap:** Average sleep duration (~7 hours) looks acceptable — but sleep efficiency tells a different story. Users lose an average of **~40 minutes per night** to restlessness or delayed sleep onset. The problem isn't time in bed; it's the quality of that time. This is an insight most trackers don't surface.
 
 ---
 
