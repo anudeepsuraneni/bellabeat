@@ -25,8 +25,8 @@ bellabeat/
 └── data/
     └── raw/
         └── fitabase_4.12.16-5.12.16/
-            ├── dailyActivity_merged.csv     # Daily activity: steps, distance, calories
-            └── sleepDay_merged.csv          # Sleep: time in bed, time asleep
+            ├── dailyActivity_merged.csv     # Daily activity: steps, distance, calories, intensity levels
+            └── sleepDay_merged.csv          # Sleep: time in bed, time asleep, sleep efficiency
 ```
 
 ---
@@ -34,7 +34,7 @@ bellabeat/
 ## 📋 Data Sources & Ethics
 
 - **Source:** [FitBit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit) (CC0: Public Domain, Kaggle dataset)
-- **Sample:** 30 FitBit users who consented to share personal tracker data (April-May 2016)
+- **Sample:** 33 FitBit users (activity dataset) and 24 users (sleep dataset) who consented to share personal tracker data (April–May 2016)
 - **Privacy:** Analysis uses only aggregated metrics with no personal identifiers; user consent obtained
 - **Credibility:** Kaggle usability score of 9.41; publicly available for reproducibility
 - **Usage:** Data analyzed to understand non-Bellabeat smart device patterns applicable to Bellabeat's product strategy
@@ -44,19 +44,19 @@ bellabeat/
 ## 🔍 Analysis Overview
 
 ### Data Preparation & Cleaning
-- Loaded daily activity and sleep datasets (940 and 413 observations respectively)
+- Loaded daily activity and sleep datasets
 - Validated data quality (no missing values, removed duplicates if present)
-- Created derived features: sleep efficiency, activity segments, temporal variables
+- Created derived features: sleep efficiency (`TotalMinutesAsleep / TotalTimeInBed × 100`), sleep duration in hours, activity segments based on step thresholds, temporal variables
 
 ### Key Metrics Analyzed
-- **Activity patterns:** Daily steps, sedentary minutes, activity intensity levels
+- **Activity patterns:** Daily steps, sedentary hours, activity intensity levels (very active, fairly active, lightly active), calories
 - **Sleep quality:** Total sleep duration, time in bed, sleep efficiency percentage
-- **User segmentation:** Three activity tiers based on step counts (10k+, 5-10k, <5k)
+- **User segmentation:** Three activity tiers based on step counts (10k+, 5–10k, <5k)
 - **Behavioral relationships:** Correlation between steps and sedentary time, sleep efficiency patterns
 
 ### Visualization Approach
 - Custom color palettes for brand alignment
-- Trend smoothing to identify patterns
+- LOESS trend smoothing to identify patterns
 - Segment-based histograms for audience targeting
 - Sleep efficiency scatter plots with diagonal reference lines
 
@@ -64,14 +64,14 @@ bellabeat/
 
 ## 💡 Key Findings
 
-1. **The Sedentary Paradox:** Users average **16.5 hours of sedentary time daily**, even those hitting 10,000+ steps. Step count alone doesn't capture total health—active users can still be highly sedentary.
+1. **The Sedentary Paradox:** Users average **16.5 hours of sedentary time daily**, even those hitting 10,000+ steps. Step count alone doesn't capture total health — active users can still be highly sedentary.
 
 2. **Three Distinct User Segments:** Behavior clusters into clear activity levels:
    - **Highly Active** (10k+ steps): Need advanced analytics & performance tracking
-   - **Moderately Active** (5-10k steps): Benefit from progress tracking & achievable milestones
+   - **Moderately Active** (5–10k steps): Benefit from progress tracking & achievable milestones
    - **Low Activity** (<5k steps): Require gentle reminders, micro-goals, and encouraging content
 
-3. **Sleep Quality Gap:** Average sleep duration (~7 hours) is acceptable, but poor **sleep efficiency** means users lose 30+ minutes to restlessness or difficulty falling asleep. Users could feel more rested with same time investment by improving efficiency.
+3. **Sleep Quality Gap:** Average sleep duration (~7 hours) is acceptable, but poor **sleep efficiency** means some users visibly lose 30+ minutes in bed without sleeping. Users could feel more rested with the same time investment by improving efficiency.
 
 ---
 
@@ -93,10 +93,19 @@ bellabeat/
 
 ---
 
+## ⚠️ Data Limitations
+
+- **Small sample size** (33 users for activity, 24 for sleep) may not fully represent Bellabeat's target demographic
+- **One-month observation window** (April–May 2016) limits understanding of long-term or seasonal behavior patterns
+- **No demographic data** (age, gender, lifestyle) prevents deeper segmentation
+- **Missing compliance context:** No data on device-wearing consistency or measurement accuracy
+
+---
+
 ## 🔄 How to Reproduce Results
 
 1. Open [bellabeat_wellness_analysis.ipynb](notebooks/bellabeat_wellness_analysis.ipynb) in RStudio or Jupyter with R kernel
-2. Ensure R packages are installed: `tidyverse`, `lubridate`
+2. Ensure R packages are installed: `tidyverse`, `lubridate`, `conflicted`
 3. Verify dataset paths point to `data/raw/fitabase_4.12.16-5.12.16/`
 4. Run all cells from top to bottom
 5. Review visualizations and insights in-notebook
@@ -109,4 +118,3 @@ bellabeat/
 - Conduct A/B testing on segment-specific messaging to measure engagement impact
 - Analyze seasonal variations in activity and sleep patterns for better feature timing
 - Investigate correlations between sleep efficiency and next-day activity levels
-- Develop prototype sleep environment monitoring features for beta testing
