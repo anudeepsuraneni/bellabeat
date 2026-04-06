@@ -8,7 +8,7 @@ A comprehensive analysis of smart device usage data to uncover behavioral patter
 
 ## 📊 Project Resources
 
-- **[Data Analysis Notebook](notebooks/bellabeat_wellness_analysis.ipynb)** — R-based analysis with derived metrics, pattern discovery, and segment profiling
+- **[Data Analysis Notebook](notebooks/bellabeat_wellness_analysis.ipynb)** — Python-based analysis with derived metrics, pattern discovery, and segment profiling
 - **[Strategic Insights](https://docs.google.com/presentation/d/1RmR7E-n8LG3ChkKzMdp_hvu58NEcJupVKOYmFJNkl4g)** — Stakeholder-ready presentation with findings and recommendations
 
 ---
@@ -19,9 +19,9 @@ A comprehensive analysis of smart device usage data to uncover behavioral patter
 bellabeat/
 ├── README.md                                # Project overview and guide
 ├── notebooks/
-│   └── bellabeat_wellness_analysis.ipynb    # Main R-based analysis notebook
+│   └── bellabeat_wellness_analysis.ipynb    # Main Python analysis notebook
 ├── outputs/
-│   └── strategic_insights.pptx              # Presentation export
+│   └── strategic_insights.pdf               # Presentation export
 └── data/
     └── raw/
         └── fitabase_4.12.16-5.12.16/
@@ -104,8 +104,8 @@ bellabeat/
 
 ## 🔄 How to Reproduce Results
 
-1. Open [bellabeat_wellness_analysis.ipynb](notebooks/bellabeat_wellness_analysis.ipynb) in RStudio or Jupyter with R kernel
-2. Ensure R packages are installed: `tidyverse`, `lubridate`, `conflicted`
+1. Open [bellabeat_wellness_analysis.ipynb](notebooks/bellabeat_wellness_analysis.ipynb) in Jupyter or VS Code
+2. Ensure Python packages are installed: `pandas`, `matplotlib`, `seaborn`, `statsmodels`
 3. Verify dataset paths point to `data/raw/fitabase_4.12.16-5.12.16/`
 4. Run all cells from top to bottom
 5. Review visualizations and insights in-notebook
